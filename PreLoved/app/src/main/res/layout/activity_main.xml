@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#7a1030"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <!-- Logo / App Title -->
+
+    <!-- Register Button -->
+
+    <TextView
+        android:id="@+id/logoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45sp"
+        android:text="PRELOVED"
+        android:textColor="#FFFFFF"
+        android:fontFamily="@font/teachers_bold"
+        android:textSize="55sp" />
+
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="wrap_content"
+        android:layout_height="247dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="App Logo"
+        android:src="@drawable/prelovedlogo2" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REGISTER"
+        android:gravity="center"
+        android:fontFamily="@font/teachers_bold"
+        android:textColor="#FFFFFF"
+        android:textSize="29sp"
+        android:background="#190D21"
+        android:elevation="6dp"
+        android:layout_marginBottom="20dp"
+        android:paddingVertical="12dp" />
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN"
+        android:gravity="center"
+        android:textSize="29sp"
+        android:fontFamily="@font/teachers_bold"
+        android:textColor="#FFFFFF"
+
+        android:background="#190D21"
+        android:elevation="6dp"
+        android:paddingVertical="12dp" />
+
+</LinearLayout>
