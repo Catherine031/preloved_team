@@ -3,10 +3,8 @@ package com.example.preloved;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +20,6 @@ import org.json.JSONObject;
 public class LoginActivity extends AppCompatActivity {
     EditText editEmail, editPassword;
     Button btnLogin, btnGoToRegister;
-    TextView txtCreateAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         editEmail = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        txtCreateAccount = findViewById(R.id.txtCreateAccount);
+        btnGoToRegister = findViewById(R.id.btnGoToRegister);
 
         btnLogin.setOnClickListener(v -> {
             String email = editEmail.getText().toString().trim();
@@ -95,9 +92,10 @@ public class LoginActivity extends AppCompatActivity {
             queue.add(stringRequest);
         });
 
-        txtCreateAccount.setOnClickListener(v -> {
+        btnGoToRegister.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         });
     }
 }

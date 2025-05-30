@@ -1,6 +1,9 @@
 package com.example.preloved;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.RatingBar;
@@ -25,14 +28,22 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private ImageView itemImage;
     private TextView itemTitle, itemDescription, itemPrice, itemUsername, averageRatingText;
     private RatingBar ratingBar;
+    private TextView ratingCountText;
+
+    private String currentTitle = null;
+
+
+
+
 
     private int itemId = -1;
-    private int userId = -1;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
+        ImageButton btn_home = findViewById(R.id.go_home);
 
 
         itemImage = findViewById(R.id.item_image);
@@ -44,11 +55,17 @@ public class ItemDetailsActivity extends AppCompatActivity {
         ratingBar = findViewById(R.id.rating_bar);
         Button submitRatingButton = findViewById(R.id.submit_rating);
         String title = getIntent().getStringExtra("title");
-        userId = getIntent().getIntExtra("user_id", -1);
+        SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        int userId = prefs.getInt("user_id", -1);
 
-        if (title != null) {
-            loadItemDetails(title);
+        ratingCountText = findViewById(R.id.rating_count);
+
+        currentTitle = getIntent().getStringExtra("title");
+        if (currentTitle != null) {
+            loadItemDetails(currentTitle);
         }
+
+
 
         submitRatingButton.setOnClickListener(v -> {
             float ratingValue = ratingBar.getRating();
@@ -61,6 +78,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
             }
         });
 
+        btn_home.setOnClickListener(v -> {
+            Intent intent = new Intent(ItemDetailsActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            finish();
+        });
 
 
     }
@@ -83,9 +107,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
                             String username = item.getString("username");
                             String imageUrl = item.getString("item_image");
 
-                            double averageRating = item.optDouble("average_rating", 4.0);
+                            double averageRating = item.optDouble("average_rating", 0.0);
                             int ratingCount = item.optInt("rating_count", 0);
-                            double userRating = item.optDouble("user_rating", 0.0);
 
                             // Set UI content
                             itemTitle.setText(titleText);
@@ -93,17 +116,13 @@ public class ItemDetailsActivity extends AppCompatActivity {
                             itemPrice.setText("R " + price);
                             itemUsername.setText(username);
 
-                            // Set average rating text
-                            averageRatingText.setText("Average Rating: " + averageRating + " (" + ratingCount + " ratings)");
+                            /// Set UI content
+                            averageRatingText.setText("Average Rating: " + String.format("%.1f", averageRating));
+                            ratingCountText.setText("Ratings: " + ratingCount);
 
-                            // Set user rating in RatingBar
-                            if (userRating > 0) {
-                                ratingBar.setRating((float) userRating);
-                                ratingBar.setIsIndicator(true);  // Disable if already rated
-                            } else {
-                                ratingBar.setRating(0);
-                                ratingBar.setIsIndicator(false); // Allow rating if not rated
-                            }
+                            // Allow user to rate regardless of past rating
+                            ratingBar.setRating(0);
+                            ratingBar.setIsIndicator(false);
 
                             // Load image
                             Glide.with(this).load(imageUrl).into(itemImage);
@@ -126,19 +145,18 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private void submitRating(int itemId, int userId, float ratingValue) {
         String url = "http://10.0.2.2/preloved/submit_rating.php";
 
-        com.android.volley.toolbox.StringRequest request = new com.android.volley.toolbox.StringRequest(
+        StringRequest request = new StringRequest(
                 Request.Method.POST, url,
                 response -> {
                     try {
                         JSONObject json = new JSONObject(response);
-                        if (json.getBoolean("success")) {
-                            double averageRating = json.getDouble("average_rating");
-                            int totalRatings = json.getInt("total_ratings");
+                        String message = json.getString("message");
+                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-                            averageRatingText.setText("Average Rating: " + averageRating + " (" + totalRatings + " ratings)");
-                            Toast.makeText(this, "Rating submitted! New average: " + averageRating, Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(this, "Error: " + json.getString("message"), Toast.LENGTH_SHORT).show();
+                        // Clear rating bar and refresh item details
+                        ratingBar.setRating(0);
+                        if (currentTitle != null) {
+                            loadItemDetails(currentTitle);
                         }
                     } catch (JSONException e) {
                         Toast.makeText(this, "Error parsing response: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -154,10 +172,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 params.put("item_id", String.valueOf(itemId));
                 params.put("user_id", String.valueOf(userId));
                 params.put("rating_value", String.valueOf(ratingValue));
+                params.put("title", currentTitle);  // ✅ THIS IS WHAT WAS MISSING!
                 return params;
             }
 
-            // ✅ This line ensures parameters are sent in the correct format
             @Override
             public String getBodyContentType() {
                 return "application/x-www-form-urlencoded; charset=UTF-8";
@@ -166,5 +184,5 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         Volley.newRequestQueue(this).add(request);
     }
-}
 
+}
