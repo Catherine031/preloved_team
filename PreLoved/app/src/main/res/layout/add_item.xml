@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="#000000">
+    android:background="@drawable/newbackground4">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,7 +16,8 @@
             android:background="#FFFFFF"
             android:fontFamily="@font/teachers_regular"
             android:hint="Item Title"
-            android:textSize="32sp" />
+            android:textSize="32sp"
+            />
 
         <EditText
             android:id="@+id/descriptionEditText"
@@ -51,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="96dp"
             android:layout_marginTop="16dp"
-            android:background="#FFFFFF"
             android:fontFamily="@font/teachers_bold"
+            android:background="@drawable/white_button_tile"
             android:text="Add Item"
             android:textSize="35sp" />
     </LinearLayout>
