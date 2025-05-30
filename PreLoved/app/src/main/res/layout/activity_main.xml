@@ -1,64 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#7a1030"
+    android:background="#060606"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="32dp">
 
-    <!-- Logo / App Title -->
 
-    <!-- Register Button -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:contentDescription="App Logo"
+        android:src="@drawable/applogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
 
+    <!-- Login Button -->
     <TextView
         android:id="@+id/logoText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="45sp"
-        android:text="PRELOVED"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/wasted_vindey"
+        android:text="Coutur"
         android:textColor="#FFFFFF"
-        android:fontFamily="@font/teachers_bold"
-        android:textSize="55sp" />
-
-
-    <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="wrap_content"
-        android:layout_height="247dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="App Logo"
-        android:src="@drawable/prelovedlogo2" />
+        android:textSize="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        tools:ignore="HardcodedText,SpUsage" />
 
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="REGISTER"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#C40384"
+        android:fontFamily="@font/poppins_black"
         android:gravity="center"
-        android:fontFamily="@font/teachers_bold"
+        android:paddingVertical="16dp"
+        android:text="Register"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
-        android:textSize="29sp"
-        android:background="#190D21"
-        android:elevation="6dp"
-        android:layout_marginBottom="20dp"
-        android:paddingVertical="12dp" />
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        tools:ignore="HardcodedText" />
 
-    <!-- Login Button -->
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="LOGIN"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="#C40384"
+        android:fontFamily="@font/poppins_black"
         android:gravity="center"
-        android:textSize="29sp"
-        android:fontFamily="@font/teachers_bold"
+        android:paddingVertical="16dp"
+        android:text="Login"
+        android:textAllCaps="false"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoText"
+        tools:ignore="HardcodedText" />
 
-        android:background="#190D21"
-        android:elevation="6dp"
-        android:paddingVertical="12dp" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
