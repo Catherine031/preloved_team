@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="#000000"
+    android:background="@drawable/newbackground4"
     android:layout_height="match_parent">
 
     <!-- Search Bar -->
@@ -15,9 +15,9 @@
         android:fontFamily="@font/teachers_bold"
         android:padding="12dp"
         android:inputType="text"
-        android:textColor="#000"
+        android:textColor="#FFFFFF"
         android:textSize="25sp"
-        android:textColorHint="#888"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +44,6 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:padding="8dp"
-        android:background="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -53,8 +52,8 @@
             android:id="@+id/btn_profile"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:contentDescription="Profile"
-            android:background="@drawable/ic_profile1"/>
+            android:background="@drawable/ic_profile1"
+            android:contentDescription="Profile" />
 
         <ImageButton
             android:id="@+id/addItemButton"
@@ -64,6 +63,13 @@
             android:contentDescription="Add Item"
             android:background="@drawable/prelovedplus"
             android:layout_marginHorizontal="16dp"/>
+
+        <ImageButton
+            android:id="@+id/btn_out"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="LOGOUT"
+            android:background="@drawable/logout"/>
 
     </LinearLayout>
 
