@@ -1,0 +1,60 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/newbackground4">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/titleEditText"
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:background="#FFFFFF"
+            android:fontFamily="@font/teachers_regular"
+            android:hint="Item Title"
+            android:textSize="32sp"
+            />
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="167dp"
+            android:background="#FFFFFF"
+            android:fontFamily="@font/teachers_regular"
+            android:hint="Item Description"
+            android:textSize="32sp" />
+
+        <EditText
+            android:id="@+id/priceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:background="#FFFFFF"
+            android:fontFamily="@font/teachers_regular"
+            android:hint="Price"
+            android:inputType="numberDecimal"
+            android:textSize="32sp" />
+
+        <EditText
+            android:id="@+id/imageUrlEditText"
+            android:layout_width="match_parent"
+            android:layout_height="107dp"
+            android:background="#FFFFFF"
+            android:fontFamily="@font/teachers_regular"
+            android:hint="Image URL"
+            android:textSize="32sp" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/teachers_bold"
+            android:background="@drawable/white_button_tile"
+            android:text="Add Item"
+            android:textSize="35sp" />
+    </LinearLayout>
+</ScrollView>

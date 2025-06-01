@@ -1,0 +1,166 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Scrollable content -->
+    <ScrollView
+        android:background="@drawable/newbackground2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/item_image"
+                android:layout_width="match_parent"
+                android:layout_height="114dp"
+                android:layout_marginBottom="16dp"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/teachers_bold"
+                android:text="ITEM TITLE"
+                android:textColor="#FFFFFF"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/item_description"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/teachers_bold"
+                android:text="ITEM DESCRIPTION"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/item_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/teachers_bold"
+                android:text="ITEM PRICE"
+                android:textColor="#3CB371"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/item_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                android:fontFamily="@font/teachers_bold"
+                android:text="USERNAME"
+                android:textColor="#777777"
+                android:textSize="24sp" />
+
+            <!-- Horizontal container for add/remove buttons and quantity -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical">
+
+                <Button
+                    android:id="@+id/btn_remove_from_cart"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="-"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/teachers_bold"
+                    android:backgroundTint="#FF6B6B"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginEnd="12dp" />
+
+                <TextView
+                    android:id="@+id/text_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Quantity"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/teachers_bold"
+                    android:textColor="#FFFFFF"
+                    android:padding="8dp"
+                    android:background="#444444"
+                    android:minWidth="80dp"
+                    android:gravity="center" />
+
+                <Button
+                    android:id="@+id/btn_add_to_cart"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="+"
+                    android:textSize="24sp"
+                    android:fontFamily="@font/teachers_bold"
+                    android:backgroundTint="#3CB371"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginStart="12dp" />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/average_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/teachers_regular"
+                android:text="AVG_RATING"
+                android:textColor="#FFFFFF"
+                android:textSize="23sp" />
+
+
+
+            <TextView
+                android:id="@+id/rating_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/teachers_regular"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:text="(0 ratings)" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:layout_marginBottom="16dp" />
+
+
+            <Button
+                android:id="@+id/submit_rating"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="#3CB371"
+                android:fontFamily="@font/teachers_bold"
+                android:text="Submit Rating"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Home Button Overlaid in Top-Left -->
+    <ImageButton
+        android:id="@+id/go_home"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="@drawable/ic_home"
+        android:scaleType="fitCenter"
+        android:padding="8dp" />
+</FrameLayout>

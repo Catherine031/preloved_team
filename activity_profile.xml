@@ -1,0 +1,93 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/grad_back1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/profileImageView"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:background="@drawable/prelovedprofile"
+                android:clickable="true"
+                android:focusable="true"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/textUsername"
+                android:textSize="38sp"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:fontFamily="@font/wasted_vindey"
+                android:textStyle="bold"
+                android:padding="12dp"
+                android:text="username"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textEmail"
+                android:textSize="35sp"
+                android:text="user@email.com"
+                android:fontFamily="@font/wasted_vindey"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="MY ITEMS"
+                android:textStyle="bold"
+                android:fontFamily="@font/teachers_bold"
+                android:padding="18dp"
+                android:textSize="29sp"
+                android:textColor="#000000"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerMyItems"
+                android:layout_width="match_parent"
+                android:layout_height="347dp"
+                android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Home Button Overlaid in Top-Left -->
+    <ImageButton
+        android:id="@+id/go_home"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="@drawable/ic_home"
+        android:contentDescription="Go Home"
+        android:padding="8dp"
+        android:scaleType="fitCenter" />
+
+    <ImageButton
+        android:id="@+id/cart"
+        android:layout_width="115dp"
+        android:layout_height="115dp"
+        android:layout_gravity="top|right"
+        android:layout_margin="16dp"
+        android:background="@drawable/cart_icon"
+        android:contentDescription="Go to Cart"
+        android:padding="8dp"
+        android:scaleType="fitCenter" />
+</FrameLayout>
