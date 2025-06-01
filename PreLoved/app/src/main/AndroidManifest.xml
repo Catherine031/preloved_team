@@ -33,6 +33,8 @@
         <activity android:name=".ProfileActivity"/>
         <activity android:name=".AddItemsActivity"/>
         <activity android:name=".ItemDetailsActivity"/>
+        <activity android:name=".CartActivity"/>
+        <activity android:name=".CheckoutActivity"/>
 
     </application>
 
