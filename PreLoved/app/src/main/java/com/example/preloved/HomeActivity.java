@@ -1,5 +1,14 @@
 package com.example.preloved;
 
+
+import com.example.preloved.R;
+
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         ImageButton btnProfile = findViewById(R.id.btn_profile);
         ImageButton addItemButton = findViewById(R.id.addItemButton);
+        ImageButton btn_out = findViewById(R.id.btn_out);
 
         int userId = getIntent().getIntExtra("user_id", -1);
 
@@ -62,11 +72,23 @@ public class HomeActivity extends AppCompatActivity {
             intent.putExtra("user_id", userId);
             intent.putExtra("username", username);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         });
 
         addItemButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, AddItemsActivity.class);
             startActivity(intent);
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+        });
+
+        btn_out.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            finish();
+
+
         });
 
 

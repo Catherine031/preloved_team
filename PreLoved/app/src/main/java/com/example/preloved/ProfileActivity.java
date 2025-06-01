@@ -1,7 +1,10 @@
 package com.example.preloved;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
     private ItemAdapter adapter;
     private int currentPage = 0;
     private static final int ITEMS_PER_PAGE = 4;
+
+
     private String baseUrl = "http://10.0.2.2/preloved/fetch_items.php";
 
     @Override
@@ -46,9 +51,13 @@ public class ProfileActivity extends AppCompatActivity {
         textUsername = findViewById(R.id.textUsername);
         textEmail = findViewById(R.id.textEmail);
         recyclerMyItems = findViewById(R.id.recyclerMyItems);
+        ImageButton btn_home = findViewById(R.id.go_home);
+        ImageButton btn_cart = findViewById(R.id.cart);
 
-        int userId = getIntent().getIntExtra("user_id", -1);
-        String username = getIntent().getStringExtra("username");
+        SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
+        int userId = prefs.getInt("user_id", -1);
+        String username = prefs.getString("username", "Unknown");
+
 
 
         textUsername.setText(username);
@@ -70,6 +79,26 @@ public class ProfileActivity extends AppCompatActivity {
 
         fetchUserProfile(userId);
         fetchUserItems(userId);
+
+        btn_home.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            finish();
+
+
+        });
+
+        btn_cart.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, CartActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+            finish();
+
+
+        });
     }
 
     private void fetchUserProfile(int userId) {

@@ -76,7 +76,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                     Intent intent = new Intent(context, ItemDetailsActivity.class);
                     intent.putExtra("title", clickedItem.getTitle());
                     intent.putExtra("user_id", userId); // This must be included!
-                    itemView.getContext().startActivity(intent);
+
 
                     context.startActivity(intent);
                 }

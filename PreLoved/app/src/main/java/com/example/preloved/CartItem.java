@@ -1,16 +1,18 @@
 package com.example.preloved;
 
-public class Item {
+import java.io.Serializable;
+
+public class CartItem implements Serializable {
     private String title;
     private String price;
-    private String username;
     private String imageUrl;
+    private int quantity; // ✅ Added
 
-    public Item(String title, String price, String username, String imageUrl) {
+    public CartItem(String title, String price, String imageUrl, int quantity) {
         this.title = title;
         this.price = price;
-        this.username = username;
         this.imageUrl = imageUrl;
+        this.quantity = quantity;
     }
 
     public String getTitle() {
@@ -21,11 +23,11 @@ public class Item {
         return price;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    public int getQuantity() {
+        return quantity;
     }
 }
