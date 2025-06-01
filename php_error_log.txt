@@ -1,0 +1,38 @@
+Reached script
+Reached script
+Reached script
+Array
+(
+    [user_id] => 44
+    [price] => 50.0
+    [description] => Friday's Trial Run of App Functionality
+    [item_image] => uploads/demo.jpg
+    [title] => DEMO
+)
+Reached script
+Reached script
+Reached script
+Reached script
+Reached script
+Reached script
+Reached script
+Array
+(
+    [user_id] => 50
+    [price] => 540.0
+    [description] => Luxury jewelry
+    [item_image] => uploads/earrings.jpg
+    [title] => Tiffany Earrings
+)
+Reached script
+Reached script
+Reached script
+Reached script
+Array
+(
+    [user_id] => 53
+    [price] => 800.0
+    [description] => Demonstration Item
+    [item_image] => uploads/demo.jpg
+    [title] => DEMO
+)
